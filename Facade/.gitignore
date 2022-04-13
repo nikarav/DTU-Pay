@@ -1,3 +1,4 @@
 .idea
 .metadata
 .DS_Store
+.build_and_run.sh

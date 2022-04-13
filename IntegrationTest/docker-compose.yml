@@ -1,0 +1,48 @@
+version: '3'
+services:    
+  account-service:
+    image: account 
+    container_name: account 
+    restart: on-failure
+    depends_on:
+     - rabbitMq
+    
+  facade-service:
+    image: facade
+    container_name: facade
+    restart: on-failure
+    depends_on:
+     - rabbitMq
+    ports:
+     - "8080:8080"
+    
+  payment-service:
+    image: payment
+    container_name: payment
+    restart: on-failure
+    depends_on:
+     - rabbitMq
+    
+  reporting-service:
+    image: reporting
+    container_name: reporting
+    restart: on-failure
+    depends_on:
+     - rabbitMq
+    restart: on-failure
+    depends_on:
+     - rabbitMq
+    
+  token-service:
+    image: token
+    container_name: token
+    restart: on-failure
+    depends_on:
+     - rabbitMq
+    
+  rabbitMq:
+    image: rabbitmq:3-management
+    container_name: rabbitMq_container
+    ports:
+     - "5672:5672"
+     - "15672:15672"

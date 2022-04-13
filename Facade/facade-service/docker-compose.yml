@@ -1,0 +1,46 @@
+version: '3'
+services:
+  facade-service:
+    image: facade
+    build: .
+    
+  rabbitMq:
+   image: rabbitmq:3-management
+   container_name: rabbitMq_container
+   ports:
+     - "5672:5672"
+     - "15672:15672"
+
+  DTUPay:
+   build: .
+   image: dtu-pay-facade-service
+   container_name: DTUPayFacadeService
+   ports:
+     - "8084:8080"
+
+  account-service:
+   image: account
+   container_name: account-management-service
+
+  token-service:
+    image: token
+    container_name: token-management-service
+    restart: on-failure
+    depends_on:
+      - rabbitMq
+
+  reporting-service:
+    image: reporting
+    container_name: reporting-container
+    restart: on-failure
+    depends_on:
+      - rabbitMq
+
+  payment-service:
+    image: payment
+    container_name: payment
+    restart: on-failure
+    depends_on:
+      - rabbitMq
+    
+

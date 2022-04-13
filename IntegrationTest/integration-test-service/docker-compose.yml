@@ -1,0 +1,8 @@
+version: '3'
+services:
+  DTUPay:
+    build: .
+    image: dtu-pay-integration-test-service
+    container_name: DTUPayIntegrationTestService
+    ports:
+      - "8085:8080"
