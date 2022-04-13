@@ -1,0 +1,307 @@
+swagger: '2.0'
+info:
+  version: v1.0
+  title: DTUPAY
+host: 'fm-21.compute.dtu.dk:8080'
+schemes:
+  - http
+paths:
+  /customer/getToken:
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - text/plain
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RequestTokens'
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            type: string
+        '400':
+          description: Bad Request
+          headers: {}
+          schema:
+            type: string
+        '500':
+          description: Internal Server Error
+          headers: {}
+          schema:
+            type: string
+  /customer/register:
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - text/plain
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Account'
+      responses:
+        '201':
+          description: Created
+          headers: {}
+          schema:
+            type: string
+        '400':
+          description: Bad Request
+          headers: {}
+          schema:
+            type: string
+        '500':
+          description: Internal Server Error
+          headers: {}
+          schema:
+            type: string
+  /customer/{id}:
+    get:
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - type: string
+          name: id
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            $ref: '#/definitions/Account'
+        '400':
+          description: Bad Request
+          headers: {}
+          schema:
+            type: string
+        '404':
+          description: Not Found
+          headers: {}
+          schema:
+            type: string
+  /hello:
+    get:
+      consumes: []
+      produces:
+        - text/plain
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            type: string
+  /merchant/payment:
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - text/plain
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/RequestPaymentData'
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            type: string
+        '400':
+          description: Bad Request
+          headers: {}
+          schema:
+            type: string
+        '500':
+          description: Internal Server Error
+          headers: {}
+          schema:
+            type: string
+  /merchant/register:
+    post:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - text/plain
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Account'
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            type: string
+        '400':
+          description: Bad Request
+          headers: {}
+          schema:
+            type: string
+        '500':
+          description: Internal Server Error
+          headers: {}
+          schema:
+            type: string
+  /merchant/{id}:
+    get:
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - type: string
+          name: id
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            $ref: '#/definitions/Account'
+        '400':
+          description: Bad Request
+          headers: {}
+          schema:
+            type: string
+        '404':
+          description: Not Found
+          headers: {}
+          schema:
+            type: string
+  /report/customer/{id}:
+    get:
+      consumes: []
+      produces:
+        - application/json
+        - text/plain
+      parameters:
+        - type: string
+          name: id
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            $ref: '#/definitions/ReturnTransactionInfo'
+        '400':
+          description: Bad Request
+          headers: {}
+          schema:
+            type: string
+  /report/manager:
+    get:
+      consumes: []
+      produces:
+        - application/json
+        - text/plain
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            $ref: '#/definitions/ReturnTransactionInfo'
+        '400':
+          description: Bad Request
+          headers: {}
+          schema:
+            type: string
+  /report/merchant/{id}:
+    get:
+      consumes: []
+      produces:
+        - application/json
+        - text/plain
+      parameters:
+        - type: string
+          name: id
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          schema:
+            $ref: '#/definitions/ReturnTransactionInfo'
+        '400':
+          description: Bad Request
+          headers: {}
+          schema:
+            type: string
+definitions:
+  Account:
+    properties:
+      bankAccountId:
+        type: string
+      cprNumber:
+        type: string
+      firstName:
+        type: string
+      lastName:
+        type: string
+      type:
+        type: string
+  RequestPaymentData:
+    properties:
+      amount:
+        type: number
+      customerAccountId:
+        type: string
+      description:
+        type: string
+      merchantAccountId:
+        type: string
+      token:
+        type: string
+  RequestTokens:
+    properties:
+      amount:
+        type: integer
+      cid:
+        type: string
+  ReturnTransactionInfo:
+    properties:
+      errorMessage:
+        type: string
+      success:
+        type: boolean
+      transactions:
+        type: array
+        items:
+          $ref: '#/definitions/Transaction'
+  Transaction:
+    properties:
+      amount:
+        type: number
+      customerBankId:
+        type: string
+      description:
+        type: string
+      merchantBankId:
+        type: string
+      time:
+        type: object
+      token:
+        type: string
+      transactionId:
+        type: string
