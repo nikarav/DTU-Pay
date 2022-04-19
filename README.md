@@ -2,6 +2,15 @@
 
 **DTU Pay** is a company that offers a mobile payment option for shop owners (i.e. merchants) and customers. Both, customer and merchant, already have a bank account with the bank (the bank is supplied by SOAP). To use the service, both, customers and merchants have to be registered with DTU Pay with their bank account id’s / account numbers.
 
+## Initial Repositories
+* [Facade](https://gitlab.gbar.dtu.dk/s213685/Facade)
+* [Integration Test](https://gitlab.gbar.dtu.dk/s213685/IntegrationTest)
+* [Message Queue](https://gitlab.gbar.dtu.dk/s213685/MessageQueue)
+* [DTUPay-AccountManagement](https://gitlab.gbar.dtu.dk/s213685/DTUPay-AccountManagement)
+* [DTUPay-TokenManagement](https://gitlab.gbar.dtu.dk/s213685/DTUPay-TokenManagement)
+* [DTUPay-Payment](https://gitlab.gbar.dtu.dk/s213685/DTUPay-Payment)
+* [Reporting](https://gitlab.gbar.dtu.dk/s213685/Reporting)
+
 ## Team 
 
 |  Name | Email  | 
