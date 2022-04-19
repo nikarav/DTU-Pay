@@ -34,7 +34,7 @@ The implemantion of DTU-Pay supports the following functionalities through diffe
 - Payment,which includes transferring money from the account that the customer has in the bank to the account of the merchant in the bank.
 - Fetching payment reports to the manager, merchant and customer. However, the payment reports differ based on the role that requests the information, e.g. the manager should be aple to see all of the payments.
 
-The figure below @fig:payment depicts the payment process. It is assumed that the customer and the merchant are already registered with DTU Pay and that the customer has obtained at least one token.
+The figure below depicts the payment process. It is assumed that the customer and the merchant are already registered with DTU Pay and that the customer has obtained at least one token.
 
 ![payment](./pictures/payment.png){#fig:payment}
 
@@ -66,7 +66,7 @@ bank.retire merchant account
 
 The architecture otherview is shown in the figure below. The green parts are the components that make up the business logic. The red parts belong to the end-to-end tests.
 
-![architecture](./pictures/architecture.png){#fig:architecture}
+![architecture](./pictures/Architecture.png){#fig:architecture}
 
 ## Requirements
 
