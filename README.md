@@ -36,7 +36,7 @@ The implemantion of DTU-Pay supports the following functionalities through diffe
 
 The figure below depicts the payment process. It is assumed that the customer and the merchant are already registered with DTU Pay and that the customer has obtained at least one token.
 
-![payment](./pictures/payment.png){#fig:payment}
+![payment](./pictures/payment.png)
 
 ## Architecture 
 
@@ -66,7 +66,7 @@ bank.retire merchant account
 
 The architecture otherview is shown in the figure below. The green parts are the components that make up the business logic. The red parts belong to the end-to-end tests.
 
-![architecture](./pictures/Architecture.png){#fig:architecture}
+![architecture](./pictures/Architecture.png)
 
 ## Requirements
 
@@ -86,7 +86,7 @@ To run the tests for the microservices (All projects except integrationTest) nav
 ```
                             == Test Script == 
 #!/bin/bash
-cd DTUPay -Payment/payment -service ./build.sh
+cd DTUPay-Payment/payment -service ./build.sh
 
 OR
 
